@@ -10,8 +10,7 @@
     /* 컨테이너 */
     
     .emmath-cards-container {
-        width: 100%;
-        margin-left: 20px;
+        margin-left: 40px;
     }
     
     .emmath-cards-grid {
@@ -24,7 +23,7 @@
     
     .emmath-card {
         display: block;
-        background: #f3f8ff;
+        background: #F0F7FC;
         /* 아주 연한 블루 톤 배경 (이미지와 유사) */
         border-top-left-radius: 0;
         border-top-right-radius: 24px;
@@ -33,18 +32,34 @@
         padding: 16px 24px;
         text-decoration: none;
         color: inherit;
-        transition: background-color 0.2s ease, box-shadow 0.2s ease;
         position: relative;
         overflow: hidden;
-        height: 160px;
+        height: 170px;
         cursor: pointer;
-        box-shadow: none;
+        box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.18);
+        transition: background-color 180ms ease-out, box-shadow 180ms ease-out, transform 180ms ease-out;
+        will-change: transform, box-shadow, background-color;
     }
-    /* 호버 효과 */
+    /* 호버 효과 (매우 미세한 리프트 & 소프트 섀도우) */
     
     .emmath-card:hover {
-        background: #f7fbff;
-        box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.15);
+        background: #f8fbff;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+        transform: translateY(-1px);
+    }
+    
+    .emmath-card__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: #ededed;
+        transition: background-color 180ms ease-out, box-shadow 180ms ease-out, transform 180ms ease-out;
+    }
+    
+    .emmath-card:hover .emmath-card__icon {
+        background: #ffffff;
+        box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
+        transform: translateY(-0.5px);
     }
     
     .emmath-card:hover .emmath-card__link {
@@ -86,14 +101,7 @@
         margin: 0;
         line-height: 1.4;
     }
-    /* 아이콘 */
-    
-    .emmath-card__icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        background: #ededed;
-    }
+    /* 아이콘 (기본 상태는 위에서 정의) */
     /* 링크 텍스트: 하단 오른쪽 정렬 */
     
     .emmath-card__link {
