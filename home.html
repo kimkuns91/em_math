@@ -1,0 +1,377 @@
+<!-- 
+  이엠수학 학원 네비게이션 카드
+  아임웹에 이 파일 전체를 복사해서 HTML 위젯에 붙여넣으세요.
+-->
+
+<style>
+    /* ========================================
+       정보 카드 스타일
+       ======================================== */
+    /* 컨테이너 */
+    
+    .emmath-cards-container {
+        margin-left: 40px;
+    }
+    
+    .emmath-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 22px;
+        row-gap: 16px;
+    }
+    /* 카드 기본 스타일 */
+    
+    .emmath-card {
+        display: block;
+        background: #f0f7fc;
+        /* 아주 연한 블루 톤 배경 */
+        border-top-left-radius: 0;
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 24px;
+        padding: 16px 24px;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+        height: 170px;
+        cursor: pointer;
+        /* 애플 스타일의 미세한 보더와 그림자 초기값 */
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        /* 부드러운 물리적 움직임을 위한 베지어 곡선 적용 */
+        transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform, box-shadow, background-color;
+        z-index: 1;
+    }
+    /* 호버 효과 (애플 스타일: 부드러운 팝업 + 확산되는 그림자) */
+    
+    .emmath-card:hover {
+        background: #ffffff;
+        /* 순백색으로 강조 */
+        /* 깊이감 있는 부드러운 그림자 (Brand Navy 틴트) */
+        box-shadow: 0 20px 30px -10px rgba(14, 41, 94, 0.12), 0 10px 10px -5px rgba(14, 41, 94, 0.04);
+        /* 살짝 떠오르면서 커지는 느낌 */
+        transform: translateY(-6px) scale(1.02);
+        z-index: 10;
+        /* 호버된 카드가 최상위로 */
+        border-color: rgba(14, 41, 94, 0.05);
+    }
+    /* 아이콘 스타일 */
+    
+    .emmath-card__icon {
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        /* 쫀득한 탄성 효과 */
+    }
+    /* 호버 시 아이콘 효과 */
+    
+    .emmath-card:hover .emmath-card__icon {
+        /* 확대되면서 살짝 회전하여 생동감 부여 */
+        transform: scale(1.15) rotate(3deg);
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+    /* 링크 텍스트 효과 */
+    
+    .emmath-card__link {
+        margin-top: 0;
+        font-size: 13px !important;
+        color: #94a3b8;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        align-self: flex-end;
+        text-align: right;
+    }
+    
+    .emmath-card:hover .emmath-card__link {
+        color: #0E295E;
+        /* Brand Navy */
+        font-weight: 600;
+        /* 글자 두께 살짝 강조 */
+        transform: translateX(6px);
+        /* 우측으로 확실한 이동 */
+    }
+    /* 카드 내용 */
+    
+    .emmath-card__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        justify-content: space-between;
+    }
+    /* 헤더 영역 */
+    
+    .emmath-card__header-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    /* 서브타이틀 */
+    
+    .emmath-card__subtitle {
+        font-size: 10px !important;
+        font-weight: 600;
+        color: #cbd5e1;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+    }
+    /* 호버 시 서브타이틀도 살짝 진하게 */
+    
+    .emmath-card:hover .emmath-card__subtitle {
+        color: #94a3b8;
+    }
+    /* 타이틀 */
+    
+    .emmath-card__title {
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        color: #1e3a8a;
+        margin: 0;
+        line-height: 1.4;
+    }
+    /* 페이드인 애니메이션 */
+    
+    @keyframes emCardFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .emmath-card {
+        animation: emCardFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+    }
+    /* 순차적 등장 딜레이 */
+    
+    .emmath-card:nth-child(1) {
+        animation-delay: 0.05s;
+    }
+    
+    .emmath-card:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+    
+    .emmath-card:nth-child(3) {
+        animation-delay: 0.15s;
+    }
+    
+    .emmath-card:nth-child(4) {
+        animation-delay: 0.2s;
+    }
+    
+    .emmath-card:nth-child(5) {
+        animation-delay: 0.25s;
+    }
+    
+    .emmath-card:nth-child(6) {
+        animation-delay: 0.3s;
+    }
+    
+    .emmath-card:nth-child(7) {
+        animation-delay: 0.35s;
+    }
+    
+    .emmath-card:nth-child(8) {
+        animation-delay: 0.4s;
+    }
+    /* 반응형: 태블릿 (768px 이하) */
+    
+    @media (max-width: 768px) {
+        .emmath-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .emmath-card {
+            padding: 22px 18px;
+            min-height: 180px;
+        }
+        .emmath-card__title {
+            font-size: 18px;
+        }
+        .emmath-card__icon {
+            width: 48px;
+            height: 48px;
+        }
+        /* 모바일에서는 호버 효과를 탭 효과로 대체하거나 약하게 조정 */
+        .emmath-card:active {
+            transform: scale(0.98);
+            background: #ffffff;
+        }
+    }
+    /* 반응형: 모바일 (576px 이하) */
+    
+    @media (max-width: 576px) {
+        .emmath-cards-container {
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+        .emmath-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .emmath-card {
+            padding: 20px 16px;
+            min-height: 160px;
+        }
+        .emmath-card__subtitle {
+            font-size: 9px;
+        }
+        .emmath-card__title {
+            font-size: 17px;
+        }
+        .emmath-card__icon {
+            width: 44px;
+            height: 44px;
+        }
+        .emmath-card__link {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<!-- HTML 구조 -->
+<div class="emmath-cards-container">
+    <div class="emmath-cards-grid">
+        <!-- 1. 학원 소개 -->
+        <a href="/about" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">ACADEMY INTRODUCTION</div>
+                    <h3 class="emmath-card__title">학원 소개</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/d0a9f78d16e64.png" alt="학원 소개" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 2. 입학안내 -->
+        <a href="/process" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">ADMISSIONS GUIDE</div>
+                    <h3 class="emmath-card__title">입학안내</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/1a4210eb176dc.png" alt="입학안내" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 3. 수업시스템 -->
+        <a href="/method" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">CLASS SYSTEM</div>
+                    <h3 class="emmath-card__title">수업시스템</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/264c62838d225.png" alt="수업시스템" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 4. 수업시간표 -->
+        <a href="/schedule" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">CLASS SCHEDULE</div>
+                    <h3 class="emmath-card__title">수업시간표</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/f30ba523d7888.png" alt="수업시간표" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 5. 강사진소개 -->
+        <a href="/instructors" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">INSTRUCTORS</div>
+                    <h3 class="emmath-card__title">강사진소개</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/a65ae2b06d413.png" alt="강사진소개" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 6. 학원시설 -->
+        <a href="/campus" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">FACILITIES</div>
+                    <h3 class="emmath-card__title">학원시설</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/ec923ec25f562.png" alt="학원시설" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 7. 공지사항 -->
+        <a href="/notices" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">NOTICES</div>
+                    <h3 class="emmath-card__title">공지사항</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/54a5be0d04f41.png" alt="공지사항" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+
+        <!-- 8. 오시는길 -->
+        <a href="/location" class="emmath-card">
+            <div class="emmath-card__content">
+                <div class="emmath-card__header-row">
+                    <div class="emmath-card__subtitle">LOCATION</div>
+                    <h3 class="emmath-card__title">오시는길</h3>
+                    <div class="emmath-card__icon">
+                        <img src="https://cdn.imweb.me/thumbnail/20251127/3ce9a40aed115.png" alt="오시는길" />
+                    </div>
+                </div>
+                <div class="emmath-card__link">자세히보기 &gt;</div>
+            </div>
+        </a>
+    </div>
+</div>
+<script>
+    // JavaScript (필요시 추가 기능)
+    (function() {
+        'use strict';
+
+        // 카드 클릭 이벤트 (선택사항)
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.emmath-card');
+
+            cards.forEach(function(card) {
+                card.addEventListener('click', function() {
+                    // 여기에 추가 기능 구현 가능
+                    // 예: 구글 애널리틱스 추적, 모달 열기 등
+                    console.log('카드 클릭:', this.querySelector('.emmath-card__title').textContent);
+                });
+            });
+        });
+    })();
+</script>

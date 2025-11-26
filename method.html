@@ -1,0 +1,415 @@
+<!-- 
+  이엠수학 수업시스템 페이지 (Apple Style Process & Features)
+  아임웹에 이 파일 전체를 복사해서 HTML 위젯에 붙여넣으세요.
+-->
+
+<style>
+    /* ========================================
+     이엠수학 수업시스템 스타일
+     ======================================== */
+    
+    .emmath-method-section {
+        width: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1d1d1f;
+        line-height: 1.6;
+        box-sizing: border-box;
+        padding: 80px 20px;
+        background: #ffffff;
+    }
+    
+    .emmath-method-section *,
+    .emmath-method-section *::before,
+    .emmath-method-section *::after {
+        box-sizing: border-box;
+    }
+    
+    .emmath-method-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    /* 공통 섹션 헤더 */
+    
+    .emmath-section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .emmath-section-title {
+        font-size: 36px !important;
+        font-weight: 700 !important;
+        color: #0E295E !important;
+        /* Brand Navy */
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+    }
+    
+    .emmath-section-desc {
+        font-size: 18px !important;
+        color: #86868b;
+        margin: 0;
+        line-height: 1.5;
+        word-break: keep-all;
+    }
+    /* 1. 체계적 수업시스템 (Process Steps) */
+    
+    .emmath-process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-bottom: 120px;
+        position: relative;
+    }
+    /* 연결 화살표 (PC만) */
+    
+    .emmath-process-grid::before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: #ebedf0;
+        z-index: 0;
+    }
+    
+    .emmath-process-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 32px 24px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .emmath-process-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(14, 41, 94, 0.12);
+        border-color: transparent;
+    }
+    /* 단계 번호 뱃지 */
+    
+    .emmath-step-badge {
+        width: 40px;
+        height: 40px;
+        background: #F0F7FC;
+        /* Ice Blue */
+        color: #0E295E;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 16px;
+        margin: 0 auto 20px;
+        box-shadow: 0 4px 10px rgba(14, 41, 94, 0.1);
+    }
+    
+    .emmath-process-card:hover .emmath-step-badge {
+        background: #DE1212;
+        /* Brand Red on hover */
+        color: #ffffff;
+    }
+    
+    .emmath-process-title {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #1d1d1f;
+        margin-bottom: 12px;
+    }
+    
+    .emmath-title-point {
+        color: #DE1212;
+        /* Brand Red */
+    }
+    
+    .emmath-title-sub {
+        color: #0E295E;
+        /* Brand Navy */
+    }
+    
+    .emmath-process-desc {
+        font-size: 15px !important;
+        color: #6e6e73;
+        line-height: 1.6;
+        word-break: keep-all;
+    }
+    /* 2. 일대일 수업시스템 (Feature Highlights) */
+    
+    .emmath-features {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .emmath-feature-row {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        background: #F9FAFB;
+        /* Very Light Gray */
+        border-radius: 32px;
+        padding: 50px;
+        overflow: hidden;
+    }
+    /* 짝수번째 행은 이미지/텍스트 순서 반대 */
+    
+    .emmath-feature-row:nth-child(2) {
+        flex-direction: row-reverse;
+        background: #F0F7FC;
+        /* Ice Blue for variation */
+    }
+    
+    .emmath-feature-text {
+        flex: 1;
+    }
+    
+    .emmath-feature-title {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        margin: 0 0 20px 0;
+    }
+    
+    .emmath-feature-desc {
+        font-size: 17px !important;
+        color: #424245;
+        line-height: 1.7;
+        word-break: keep-all;
+        margin: 0;
+    }
+    
+    .emmath-feature-icon-area {
+        flex: 0 0 180px;
+        height: 180px;
+        background: #ffffff;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        font-size: 64px;
+        color: #0E295E;
+    }
+    /* 맞춤 교재 리스트 스타일 */
+    
+    .emmath-list-group {
+        margin-top: 24px;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .emmath-list-item {
+        font-size: 15px !important;
+        color: #6e6e73;
+        padding: 6px 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .emmath-list-item::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: #DE1212;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    /* 반응형 (모바일) */
+    
+    @media (max-width: 768px) {
+        .emmath-method-section {
+            padding: 50px 20px;
+        }
+        .emmath-section-title {
+            font-size: 28px !important;
+        }
+        /* 프로세스 카드 1열로 */
+        .emmath-process-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+        .emmath-process-grid::before {
+            display: none;
+            /* 연결선 숨김 */
+        }
+        .emmath-process-card {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            padding: 24px;
+        }
+        .emmath-step-badge {
+            margin: 0 20px 0 0;
+            flex-shrink: 0;
+        }
+        .emmath-process-content {
+            flex: 1;
+        }
+        .emmath-process-title {
+            margin-top: 4px;
+        }
+        /* 특징 섹션 세로 배치 */
+        .emmath-features {
+            gap: 30px;
+        }
+        .emmath-feature-row,
+        .emmath-feature-row:nth-child(2) {
+            flex-direction: column;
+            padding: 32px 24px;
+            gap: 30px;
+            text-align: center;
+        }
+        .emmath-feature-icon-area {
+            width: 100px;
+            height: 100px;
+            flex: none;
+            border-radius: 24px;
+            font-size: 40px;
+            margin: 0 auto;
+        }
+        .emmath-feature-title {
+            font-size: 22px !important;
+        }
+        .emmath-feature-desc {
+            font-size: 15px !important;
+        }
+        .emmath-list-item {
+            justify-content: center;
+            /* 모바일에서 리스트 중앙 정렬 */
+        }
+    }
+</style>
+
+<div class="emmath-method-section">
+    <div class="emmath-method-container">
+
+        <!-- 1. 체계적 수업시스템 -->
+        <div class="emmath-section-header">
+            <h2 class="emmath-section-title">체계적 수업시스템</h2>
+            <p class="emmath-section-desc">학생들이 수학의 원리를 완전히 이해하도록 설계된 4단계 학습 프로세스</p>
+        </div>
+
+        <div class="emmath-process-grid">
+            <!-- Step 1: 숙제오답 -->
+            <div class="emmath-process-card">
+                <div class="emmath-step-badge">1</div>
+                <div class="emmath-process-content">
+                    <h3 class="emmath-process-title">
+                        <span class="emmath-title-point">숙제</span> <span class="emmath-title-sub">오답</span>
+                    </h3>
+                    <p class="emmath-process-desc">
+                        틀린 문제를 모아 개인별 오답 프린트를 제공합니다. 이전 풀이와 새로운 풀이를 비교하며 스스로 점검하고, 다시는 틀리지 않도록 지도합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 2: 개념설명 -->
+            <div class="emmath-process-card">
+                <div class="emmath-step-badge">2</div>
+                <div class="emmath-process-content">
+                    <h3 class="emmath-process-title">
+                        <span class="emmath-title-point">개념</span> <span class="emmath-title-sub">설명</span>
+                    </h3>
+                    <p class="emmath-process-desc">
+                        자체 개념교재로 1:1 문답식 수업을 진행합니다. 학생이 직접 설명해보게 함으로써 이해도를 100%까지 끌어올립니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3: 문제풀이 -->
+            <div class="emmath-process-card">
+                <div class="emmath-step-badge">3</div>
+                <div class="emmath-process-content">
+                    <h3 class="emmath-process-title">
+                        <span class="emmath-title-point">문제</span> <span class="emmath-title-sub">풀이</span>
+                    </h3>
+                    <p class="emmath-process-desc">
+                        수준별 자체 교재 및 시중 교재를 사용합니다. 풀이 과정을 상세히 적게 하고, 다양한 해결 방법을 유도하여 사고력을 확장합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 4: 단원테스트 -->
+            <div class="emmath-process-card">
+                <div class="emmath-step-badge">4</div>
+                <div class="emmath-process-content">
+                    <h3 class="emmath-process-title">
+                        <span class="emmath-title-sub">단원</span> <span class="emmath-title-sub">테스트</span>
+                    </h3>
+                    <p class="emmath-process-desc">
+                        단원 학습 후 일정 시간이 지난 뒤 테스트를 시행합니다. 잊어버리기 쉬운 개념을 다시 점검하고 장기 기억으로 만듭니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 2. 일대일 수업시스템 -->
+        <div class="emmath-section-header">
+            <h2 class="emmath-section-title">일대일 수업시스템</h2>
+            <p class="emmath-section-desc">대형 학원과는 다른, 학생 한 명 한 명을 위한 맞춤형 솔루션</p>
+        </div>
+
+        <div class="emmath-features">
+            <!-- Feature 1: 맞춤형 수업 -->
+            <div class="emmath-feature-row">
+                <div class="emmath-feature-icon-area">
+                    <!-- SVG Icon: User Check -->
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                </div>
+                <div class="emmath-feature-text">
+                    <h3 class="emmath-feature-title">
+                        <span class="emmath-title-point">맞춤형 1대1</span> <span class="emmath-title-sub">수업 진행</span>
+                    </h3>
+                    <p class="emmath-feature-desc">
+                        이엠수학학원은 일대일 맞춤형 수업을 진행함으로써 학생들이 수학의 개념과 원리를 정확하게, 확실하게 이해하고 넘어갈 수 있도록 지도하고 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2: 세심한 학생관리 -->
+            <div class="emmath-feature-row">
+                <div class="emmath-feature-icon-area">
+                    <!-- SVG Icon: Heart/Care -->
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+                </div>
+                <div class="emmath-feature-text">
+                    <h3 class="emmath-feature-title">
+                        <span class="emmath-title-point">세심한 학생관리</span> <span class="emmath-title-sub">시스템</span>
+                    </h3>
+                    <p class="emmath-feature-desc">
+                        담임선생님이 학생별로 세심하게 관리하기 때문에, 대형 수학학원들과 달리 체계적이고 꼼꼼한 학생관리 시스템을 갖추고 있습니다. 학생의 작은 변화까지 놓치지 않습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3: 맞춤 교재 제공 -->
+            <div class="emmath-feature-row">
+                <div class="emmath-feature-icon-area">
+                    <!-- SVG Icon: Book Open -->
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div class="emmath-feature-text">
+                    <h3 class="emmath-feature-title">
+                        <span class="emmath-title-point">맞춤 교재 & 추가 자료</span> <span class="emmath-title-sub">제공</span>
+                    </h3>
+                    <p class="emmath-feature-desc">
+                        학생의 필요에 따라 각종 교재와 자료가 무료로 제공됩니다. 이외에도 시기별로 추가적인 수업과 자료가 빈틈없이 제공됩니다.
+                    </p>
+                    <ul class="emmath-list-group">
+                        <li class="emmath-list-item">고3 교육청/평가원 대비 자체 모의고사</li>
+                        <li class="emmath-list-item">내신 대비 문제집 및 학교별 기출문제</li>
+                        <li class="emmath-list-item">내신 대비 보충수업 실시</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

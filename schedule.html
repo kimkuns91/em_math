@@ -1,0 +1,567 @@
+<!-- 
+  이엠수학 시간표 페이지 (Tab + Apple Style)
+  아임웹에 이 파일 전체를 복사해서 HTML 위젯에 붙여넣으세요.
+-->
+
+<style>
+    /* ========================================
+       이엠수학 시간표 스타일
+       ======================================== */
+    
+    .emmath-schedule-section {
+        width: 100%;
+        color: #1d1d1f;
+        line-height: 1.5;
+        box-sizing: border-box;
+        padding: 60px 20px;
+        background: #ffffff;
+    }
+    
+    .emmath-schedule-section *,
+    .emmath-schedule-section *::before,
+    .emmath-schedule-section *::after {
+        box-sizing: border-box;
+    }
+    
+    .emmath-schedule-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    /* 1. 타이틀 영역 */
+    
+    .emmath-schedule-header {
+        text-align: center;
+        margin-bottom: 60px;
+        /* Increased margin */
+    }
+    
+    .emmath-schedule-title {
+        font-size: 40px !important;
+        /* Increased title size */
+        font-weight: 700 !important;
+        color: #0E295E !important;
+        /* Brand Navy */
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+    }
+    
+    .emmath-schedule-subtitle {
+        font-size: 18px !important;
+        /* Increased subtitle size */
+        color: #86868b;
+        margin: 0;
+    }
+    /* 2. 탭 컨트롤 (Improved iOS Style) */
+    
+    .emmath-tab-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+        /* Increased margin */
+    }
+    
+    .emmath-tabs {
+        display: inline-flex;
+        align-items: center;
+        /* 세로 중앙 정렬 추가 */
+        background: #F2F2F7;
+        padding: 4px;
+        border-radius: 100px;
+        position: relative;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+    
+    .emmath-tab-btn {
+        position: relative;
+        display: flex;
+        /* Flexbox 사용 */
+        align-items: center;
+        /* 세로 중앙 정렬 */
+        justify-content: center;
+        /* 가로 중앙 정렬 */
+        border: none;
+        background: transparent;
+        padding: 14px 48px;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+        color: #6e6e73;
+        border-radius: 100px;
+        cursor: pointer;
+        z-index: 2;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+        line-height: 1;
+        /* 줄 높이 초기화 */
+    }
+    
+    .emmath-tab-btn.active {
+        color: #0E295E;
+        /* Brand Navy */
+        font-weight: 700 !important;
+        /* Bold active state */
+    }
+    
+    .emmath-tab-bg {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        height: calc(100% - 4px);
+        background: #ffffff;
+        border-radius: 100px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+        /* Refined shadow */
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        /* Added width transition */
+        z-index: 1;
+    }
+    /* 3. 콘텐츠 영역 (Grid) */
+    
+    .emmath-schedule-content {
+        display: none;
+        animation: emmathFadeIn 0.4s ease-out;
+    }
+    
+    .emmath-schedule-content.active {
+        display: block;
+    }
+    
+    .emmath-grid-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        /* Increased gap */
+    }
+    /* 테이블 카드 */
+    
+    .emmath-table-card {
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 24px;
+        /* Rounded corners */
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        /* Deeper shadow */
+        background: #fff;
+    }
+    
+    .emmath-table-header {
+        background: #0E295E;
+        /* Brand Navy */
+        color: #ffffff;
+        padding: 24px;
+        /* Increased padding */
+        text-align: center;
+        font-size: 22px !important;
+        /* Increased from 20px */
+        font-weight: 700 !important;
+        letter-spacing: -0.01em;
+    }
+    /* 겨울방학 헤더 전용 스타일 */
+    
+    .emmath-table-header.winter {
+        background: #0E295E;
+        position: relative;
+    }
+    /* 방학 표시 뱃지 */
+    
+    .emmath-header-badge {
+        display: inline-block;
+        background: #DE1212;
+        color: #fff;
+        font-size: 14px !important;
+        /* Increased size */
+        padding: 4px 10px;
+        border-radius: 100px;
+        margin-left: 10px;
+        vertical-align: middle;
+        font-weight: 700;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(222, 18, 18, 0.3);
+        /* Added shadow */
+    }
+    
+    .emmath-table-row {
+        display: flex;
+        border-bottom: 1px solid #ebedf0;
+    }
+    
+    .emmath-table-row:last-child {
+        border-bottom: none;
+    }
+    /* 요일 컬럼 */
+    
+    .emmath-col-day {
+        width: 110px;
+        /* Increased width */
+        background: #F9FAFB;
+        /* Lighter Gray */
+        color: #0E295E;
+        font-weight: 800 !important;
+        /* Extra Bold */
+        font-size: 18px !important;
+        /* Increased size */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        flex-shrink: 0;
+        border-right: 1px solid #ebedf0;
+    }
+    /* 시간 컬럼 */
+    
+    .emmath-col-time {
+        flex-grow: 1;
+        padding: 20px 30px;
+        /* Increased padding */
+        background: #ffffff;
+        color: #1d1d1f;
+        font-size: 18px !important;
+        /* Increased size */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        /* 항목 간 간격 */
+    }
+    /* 시간 항목 (뱃지 + 텍스트) */
+    
+    .emmath-time-item {
+        display: flex;
+        align-items: center;
+        /* Center Alignment */
+        gap: 14px;
+        line-height: 1.5;
+    }
+    /* 요일/구분 뱃지 */
+    
+    .emmath-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 28px;
+        /* Increased height */
+        padding: 0 12px;
+        /* Increased padding */
+        border-radius: 8px;
+        /* Slightly more rounded */
+        font-size: 14px !important;
+        /* Increased size */
+        font-weight: 700 !important;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .emmath-badge.navy {
+        background: #eef2f8;
+        /* Light Navy */
+        color: #0E295E;
+    }
+    
+    .emmath-badge.red {
+        background: #fff0f0;
+        /* Light Red */
+        color: #DE1212;
+    }
+    /* 시간 텍스트 강조 */
+    
+    .emmath-time-text {
+        font-weight: 600 !important;
+        letter-spacing: -0.01em;
+    }
+    /* 구분선 (화목/토 사이) */
+    
+    .emmath-divider {
+        height: 1px;
+        background: #f0f0f5;
+        width: 100%;
+        margin: 4px 0;
+    }
+    /* 보조 텍스트 (또는) */
+    
+    .emmath-sub-text {
+        color: #86868b;
+        font-size: 15px !important;
+        /* Increased size */
+        font-weight: 400;
+        margin: 0 6px;
+    }
+    
+    @keyframes emmathFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    /* 반응형 (모바일) */
+    
+    @media (max-width: 768px) {
+        .emmath-grid-row {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .emmath-schedule-title {
+            font-size: 28px !important;
+        }
+        .emmath-tab-btn {
+            padding: 10px 24px;
+            font-size: 15px !important;
+        }
+        .emmath-col-day {
+            width: 80px;
+            font-size: 16px !important;
+        }
+        .emmath-col-time {
+            padding: 16px 20px;
+        }
+        .emmath-time-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        .emmath-badge {
+            height: 24px;
+            font-size: 12px !important;
+        }
+    }
+</style>
+
+<div class="emmath-schedule-section">
+    <div class="emmath-schedule-container">
+
+        <!-- 헤더 -->
+        <div class="emmath-schedule-header">
+            <h2 class="emmath-schedule-title">수업 시간표</h2>
+            <p class="emmath-schedule-subtitle">학생의 목표와 수준에 맞춘 최적의 커리큘럼</p>
+        </div>
+
+        <!-- 탭 버튼 영역 -->
+        <div class="emmath-tab-container">
+            <div class="emmath-tabs">
+                <div class="emmath-tab-bg" id="emmathTabBg" style="width: 105px; transform: translateX(0);"></div>
+                <button class="emmath-tab-btn active" onclick="switchEmSchedule('basic', this)">기본 시간표</button>
+                <button class="emmath-tab-btn" onclick="switchEmSchedule('winter', this)">겨울방학 시간표</button>
+            </div>
+        </div>
+
+        <!-- 1. 기본 시간표 -->
+        <div id="schedule-basic" class="emmath-schedule-content active">
+            <div class="emmath-grid-row">
+
+                <!-- 중등부 테이블 -->
+                <div class="emmath-table-card">
+                    <div class="emmath-table-header">중등부 시간표</div>
+
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">월수금</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">4:40 - 7:20</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">7:30 - 10:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">화,목</span>
+                                <span class="emmath-time-text">4:40 - 7:20</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge red">토요일</span>
+                                <span class="emmath-time-text">10:00 - 12:40 <span class="emmath-sub-text">또는</span> 12:00 - 2:40</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">화,목</span>
+                                <span class="emmath-time-text">7:30 - 10:00</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge red">토요일</span>
+                                <span class="emmath-time-text">1:00 - 3:40 <span class="emmath-sub-text">또는</span> 2:50 - 5:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 고등부 테이블 -->
+                <div class="emmath-table-card">
+                    <div class="emmath-table-header">고등부 시간표</div>
+
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">월수금</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">4:40 - 7:20</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">7:30 - 10:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">화,목</span>
+                                <span class="emmath-time-text">4:40 - 7:20</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge red">토요일</span>
+                                <span class="emmath-time-text">10:00 - 12:50 <span class="emmath-sub-text">또는</span> 12:00 - 2:50</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">화,목</span>
+                                <span class="emmath-time-text">7:30 - 10:00</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge red">토요일</span>
+                                <span class="emmath-time-text">12:50 - 3:40 <span class="emmath-sub-text">또는</span> 2:50 - 5:40</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 2. 겨울방학 시간표 -->
+        <div id="schedule-winter" class="emmath-schedule-content">
+            <div class="emmath-grid-row">
+
+                <!-- 겨울방학 중등부 -->
+                <div class="emmath-table-card">
+                    <div class="emmath-table-header winter">
+                        중등부 시간표 <span class="emmath-header-badge">Winter</span>
+                    </div>
+
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">월수금</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">12:00 ~ 3:40</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">4:00 ~ 7:40</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">12:00 ~ 3:40</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">4:00 ~ 7:40</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 겨울방학 고등부 -->
+                <div class="emmath-table-card">
+                    <div class="emmath-table-header winter">
+                        고등부 시간표 <span class="emmath-header-badge">Winter</span>
+                    </div>
+
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">월수금</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">12:00 ~ 3:50</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">4:00 ~ 7:50</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emmath-table-row">
+                        <div class="emmath-col-day">화목토</div>
+                        <div class="emmath-col-time">
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 1</span>
+                                <span class="emmath-time-text">12:00 ~ 3:50</span>
+                            </div>
+                            <div class="emmath-divider"></div>
+                            <div class="emmath-time-item">
+                                <span class="emmath-badge navy">오후 2</span>
+                                <span class="emmath-time-text">4:00 ~ 7:50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function switchEmSchedule(type, btnElement) {
+        // 1. 버튼 활성화 처리
+        const buttons = document.querySelectorAll('.emmath-tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+
+        // 2. 배경 바 이동 애니메이션
+        const bg = document.getElementById('emmathTabBg');
+        const width = btnElement.offsetWidth;
+        const left = btnElement.offsetLeft;
+        bg.style.width = width + 'px';
+        bg.style.transform = 'translateX(' + left + 'px)';
+
+        // 3. 콘텐츠 전환
+        const contents = document.querySelectorAll('.emmath-schedule-content');
+        contents.forEach(content => content.classList.remove('active'));
+
+        const targetContent = document.getElementById('schedule-' + type);
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
+    }
+
+    // 초기화
+    document.addEventListener("DOMContentLoaded", function() {
+        const firstBtn = document.querySelector('.emmath-tab-btn.active');
+        if (firstBtn) {
+            const bg = document.getElementById('emmathTabBg');
+            bg.style.width = firstBtn.offsetWidth + 'px';
+            bg.style.transform = 'translateX(' + firstBtn.offsetLeft + 'px)';
+        }
+    });
+</script>

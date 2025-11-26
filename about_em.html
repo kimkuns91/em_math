@@ -1,0 +1,375 @@
+<!-- 
+  이엠수학 소개 페이지 (Apple Style + Brand Colors)
+  아임웹에 이 파일 전체를 복사해서 HTML 위젯에 붙여넣으세요.
+-->
+
+<style>
+    /* ========================================
+       이엠수학 소개 스타일
+       ======================================== */
+    
+    .emmath-about-section {
+        width: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1d1d1f;
+        line-height: 1.6;
+        box-sizing: border-box;
+        padding: 60px 20px;
+        background: #ffffff;
+    }
+    
+    .emmath-about-section *,
+    .emmath-about-section *::before,
+    .emmath-about-section *::after {
+        box-sizing: border-box;
+    }
+    /* 메인 컨테이너 */
+    
+    .emmath-about-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    /* 0. 메인 타이틀 (상단) */
+    
+    .emmath-main-header {
+        text-align: center;
+        margin-bottom: 90px;
+        padding-top: 20px;
+    }
+    
+    .emmath-main-title {
+        font-size: 44px !important;
+        font-weight: 700 !important;
+        line-height: 1.2;
+        color: #0E295E !important;
+        /* Brand Navy */
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        word-break: keep-all;
+    }
+    
+    .emmath-main-subtitle {
+        font-size: 22px !important;
+        font-weight: 400 !important;
+        color: #86868b;
+        margin: 0;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        word-break: keep-all;
+    }
+    /* 1. 체크리스트 섹션 */
+    
+    .emmath-checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 120px;
+        border-bottom: 1px solid #d2d2d7;
+        padding-bottom: 80px;
+    }
+    
+    .emmath-check-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .emmath-check-icon {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1.5px solid #DE1212;
+        /* Brand Red */
+        color: #DE1212;
+        /* Brand Red */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        margin-top: 2px;
+        box-shadow: 0 2px 6px rgba(222, 18, 18, 0.15);
+        /* Brand Red Shadow */
+    }
+    
+    .emmath-check-text h3 {
+        margin: 0 0 8px 0;
+        font-size: 21px !important;
+        font-weight: 700 !important;
+        color: #0E295E;
+        /* Brand Navy */
+        letter-spacing: -0.01em;
+    }
+    
+    .emmath-check-text p {
+        margin: 0;
+        font-size: 16px !important;
+        color: #424245;
+        line-height: 1.6;
+        word-break: keep-all;
+    }
+    /* 2. 교재 섹션 (개념/유형) */
+    
+    .emmath-materials {
+        margin-bottom: 120px;
+    }
+    
+    .emmath-section-title {
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        text-align: center;
+        margin-bottom: 60px;
+        color: #0E295E !important;
+        /* Brand Navy */
+        letter-spacing: -0.02em;
+    }
+    /* 그리드 레이아웃 */
+    
+    .emmath-materials-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        position: relative;
+    }
+    /* 중앙 플러스 아이콘 (PC) */
+    
+    .emmath-plus-icon {
+        position: absolute;
+        left: 50%;
+        top: 80px;
+        /* 카드 높이의 중앙 */
+        transform: translate(-50%, -50%);
+        width: 48px;
+        height: 48px;
+        background: #DE1212;
+        /* Brand Red */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        /* White Icon */
+        box-shadow: 0 6px 16px rgba(222, 18, 18, 0.3);
+        /* Brand Red Shadow */
+        z-index: 10;
+        border: none;
+    }
+    
+    .emmath-col {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    /* 카드 스타일 */
+    
+    .emmath-material-card {
+        height: 160px;
+        background: #F0F7FC;
+        /* Ice Blue (Brand Background) */
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .emmath-material-card:hover {
+        transform: translateY(-4px);
+        background: #e1effa;
+        /* Darker Ice Blue for Hover */
+        box-shadow: 0 10px 20px rgba(14, 41, 94, 0.08);
+        /* Navy-tinted shadow */
+    }
+    
+    .emmath-card-sub {
+        font-size: 14px !important;
+        color: #5b708b;
+        /* Muted Navy-Gray */
+        margin-bottom: 6px;
+        font-weight: 600 !important;
+    }
+    
+    .emmath-card-main {
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        color: #0E295E !important;
+        /* Brand Navy */
+    }
+    
+    .emmath-desc {
+        font-size: 15px !important;
+        color: #424245;
+        line-height: 1.7;
+        text-align: justify;
+        word-break: keep-all;
+    }
+    /* 3. 숙제 섹션 (배너형) */
+    
+    .emmath-homework {
+        background: #F5F5F7;
+        /* System Gray */
+        border-radius: 30px;
+        padding: 80px 40px;
+        text-align: center;
+    }
+    
+    .emmath-homework h3 {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        margin: 0 0 24px 0;
+        color: #0E295E !important;
+        /* Brand Navy */
+    }
+    
+    .emmath-homework p {
+        font-size: 17px !important;
+        color: #424245;
+        margin: 8px 0;
+        line-height: 1.6;
+        word-break: keep-all;
+    }
+    /* 반응형 (모바일) */
+    
+    @media (max-width: 768px) {
+        .emmath-about-section {
+            padding: 40px 20px;
+        }
+        .emmath-main-header {
+            margin-bottom: 50px;
+            padding-top: 0;
+        }
+        .emmath-main-title {
+            font-size: 28px !important;
+        }
+        .emmath-main-subtitle {
+            font-size: 16px !important;
+        }
+        .emmath-checklist {
+            gap: 32px;
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+        }
+        .emmath-check-text h3 {
+            font-size: 19px !important;
+        }
+        .emmath-section-title {
+            font-size: 24px !important;
+            margin-bottom: 40px;
+        }
+        /* 그리드 1열로 변경 */
+        .emmath-materials-grid {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+        /* 플러스 아이콘 재배치 */
+        .emmath-plus-icon {
+            position: static;
+            transform: none;
+            margin: -30px auto -30px;
+            /* 카드 사이로 이동 */
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+        }
+        /* 모바일에서 순서 조정을 위해 flex 사용 */
+        .emmath-materials-grid {
+            display: flex;
+            flex-direction: column;
+        }
+        .emmath-homework {
+            padding: 50px 24px;
+        }
+        .emmath-homework h3 {
+            font-size: 22px !important;
+        }
+        .emmath-homework p {
+            font-size: 15px !important;
+        }
+    }
+</style>
+
+<div class="emmath-about-section">
+    <div class="emmath-about-container">
+
+        <!-- 0. 메인 타이틀 -->
+        <div class="emmath-main-header">
+            <h1 class="emmath-main-title">이엠수학은 올바른 학습 습관을 만듭니다</h1>
+            <p class="emmath-main-subtitle">학생 한 명 한 명의 속도와 이해도에 맞춘 1:1 수준별 맞춤 수업</p>
+        </div>
+
+        <!-- 1. 체크리스트 섹션 -->
+        <div class="emmath-checklist">
+            <div class="emmath-check-item">
+                <div class="emmath-check-icon">✔</div>
+                <div class="emmath-check-text">
+                    <h3>이엠은 학생의 속도에 맞춰 수업합니다.</h3>
+                    <p>학생의 이해속도에 맞춰 지도하기 위해 한 반의 정원을 4~6명으로 제한하여 1:1 수준별 맞춤 수업을 진행합니다.</p>
+                </div>
+            </div>
+
+            <div class="emmath-check-item">
+                <div class="emmath-check-icon">✔</div>
+                <div class="emmath-check-text">
+                    <h3>이엠은 쌍방향 수업을 지향합니다.</h3>
+                    <p>주입식 수업을 통해 학생이 풀이를 외우도록 하는 대부분의 학원들과는 달리, 개별적 질문과 답변을 통해 학생이 스스로 생각해 보고 고민해서 문제를 해결할 수 있도록 지도합니다.</p>
+                </div>
+            </div>
+
+            <div class="emmath-check-item">
+                <div class="emmath-check-icon">✔</div>
+                <div class="emmath-check-text">
+                    <h3>수학은 하나의 언어입니다.</h3>
+                    <p>수학에 어려움을 느끼는 학생들은 공통적으로 수학이라는 언어에 대한 이해력과 표현력이 부족합니다. 이것은 대부분 잘못된 학습 습관에서 비롯됩니다. 이엠수학은 학생들이 수학 공부에 대한 올바른 학습 습관을 갖도록 훈련하여 스스로 공부할 수 있는 힘을 키워줍니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 수준별 교재 섹션 -->
+        <div class="emmath-materials">
+            <h2 class="emmath-section-title">이엠은 수준별 개념/유형 교재를 사용합니다</h2>
+
+            <div class="emmath-materials-grid">
+                <!-- 왼쪽: 개념학습 -->
+                <div class="emmath-col">
+                    <div class="emmath-material-card">
+                        <span class="emmath-card-sub">수준별 개념교재를 통한</span>
+                        <span class="emmath-card-main">개념학습</span>
+                    </div>
+                    <div class="emmath-desc">
+                        이엠은 학생 수준에 맞는 자체 개념 교재를 통해 학생들이 자신의 수준에 맞게 개념을 이해하고 학습할 수 있도록 하고 있습니다.<br><br> 기본 개념과 더불어 연습문제를 함께 풀어보면서 학생 스스로 개념을 완전히 이해했는지 확인해보고, 이해가 가지 않는 부분은 담당 선생님의 보충 설명과 함께 다시 학습해보는 시간을 갖습니다.
+                    </div>
+                </div>
+
+                <!-- 중앙 플러스 아이콘 -->
+                <div class="emmath-plus-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 6V18M6 12H18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <!-- 오른쪽: 유형학습 -->
+                <div class="emmath-col">
+                    <div class="emmath-material-card">
+                        <span class="emmath-card-sub">수준별 유형교재를 통한</span>
+                        <span class="emmath-card-main">유형학습</span>
+                    </div>
+                    <div class="emmath-desc">
+                        이엠은 개념 교재와 더불어 수준별 자체 유형 교재를 통해 개념을 실전 문제에 적용하고 문제풀이 능력을 향상시킬 수 있도록 하고 있습니다.<br><br> 각 유형별 대표 문제를 풀어보고 어려운 부분은 담당 선생님의 보충 설명과 함께 개념을 되짚어 보는 시간을 가진 후, 유형별 추가 문항을 통해 개념을 완전히 유형에 적용시키는 훈련을 하고 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 숙제/오답 프린트 섹션 -->
+        <div class="emmath-homework">
+            <h3>이엠은 개인별 맞춤 숙제/오답 프린트를 제공합니다</h3>
+            <p>학습한 개념과 유형을 복습하기 위해 개인별 맞춤 프린트 숙제가 제공됩니다.</p>
+            <p>틀린 문항에 대해서는 개인별 맞춤 오답 프린트를 제작하여</p>
+            <p>틀린 이유와 개념을 복습하며 다시 한번 문제를 풀어볼 수 있게 지도하고 있습니다.</p>
+        </div>
+
+    </div>
+</div>

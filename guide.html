@@ -1,0 +1,223 @@
+<!-- 
+  이엠수학 입학안내 페이지 (Process Steps)
+  아임웹에 이 파일 전체를 복사해서 HTML 위젯에 붙여넣으세요.
+-->
+
+<style>
+    /* ========================================
+     이엠수학 입학안내 스타일
+     ======================================== */
+    
+    .emmath-guide-section {
+        width: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1d1d1f;
+        line-height: 1.6;
+        box-sizing: border-box;
+        padding: 80px 20px;
+        background: #ffffff;
+    }
+    
+    .emmath-guide-section *,
+    .emmath-guide-section *::before,
+    .emmath-guide-section *::after {
+        box-sizing: border-box;
+    }
+    
+    .emmath-guide-container {
+        max-width: 700px;
+        /* 프로세스는 집중도를 위해 좁게 */
+        margin: 0 auto;
+        text-align: center;
+    }
+    /* 헤더 */
+    
+    .emmath-guide-header {
+        margin-bottom: 60px;
+    }
+    
+    .emmath-guide-title {
+        font-size: 36px !important;
+        font-weight: 700 !important;
+        color: #0E295E !important;
+        /* Brand Navy */
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+    /* 프로세스 리스트 */
+    
+    .emmath-process-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        /* 카드와 화살표 간격 */
+        align-items: center;
+    }
+    /* 공통 카드 스타일 */
+    
+    .emmath-step-card {
+        width: 100%;
+        padding: 32px;
+        border-radius: 20px;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        word-break: keep-all;
+    }
+    
+    .emmath-step-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+    /* Step 1: 상담 (Navy 강조) */
+    
+    .emmath-step-card.step-1 {
+        background: #0E295E;
+        color: #ffffff;
+        border: 1px solid #0E295E;
+    }
+    /* Step 2, 3: 중간 과정 (Ice Blue) */
+    
+    .emmath-step-card.step-process {
+        background: #F0F7FC;
+        color: #0E295E;
+        border: 1px solid rgba(14, 41, 94, 0.05);
+    }
+    /* Step 4: 입학 (Light Gray or White) */
+    
+    .emmath-step-card.step-final {
+        background: #F0F7FC;
+        color: #0E295E;
+        border: 1px solid rgba(14, 41, 94, 0.05);
+    }
+    /* 연결 화살표 */
+    
+    .emmath-step-arrow {
+        color: #d1d5db;
+        font-size: 24px;
+        animation: emmathBounce 2s infinite;
+    }
+    /* 카카오톡 버튼 (CTA) */
+    
+    .emmath-kakao-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 24px;
+        background: #FEE500;
+        /* Kakao Yellow */
+        color: #191919;
+        /* Kakao Black */
+        border-radius: 20px;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        margin-top: 20px;
+    }
+    
+    .emmath-kakao-btn:hover {
+        transform: scale(1.02);
+    }
+    /* 카카오 아이콘 */
+    
+    .emmath-kakao-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+    }
+    
+    @keyframes emmathBounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(6px);
+        }
+        60% {
+            transform: translateY(3px);
+        }
+    }
+    /* 반응형 (모바일) */
+    
+    @media (max-width: 768px) {
+        .emmath-guide-section {
+            padding: 50px 20px;
+        }
+        .emmath-guide-title {
+            font-size: 28px !important;
+        }
+        .emmath-step-card {
+            padding: 24px 20px;
+            font-size: 17px !important;
+            border-radius: 16px;
+        }
+        .emmath-kakao-btn {
+            font-size: 18px !important;
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="emmath-guide-section">
+    <div class="emmath-guide-container">
+
+        <div class="emmath-guide-header">
+            <h2 class="emmath-guide-title">입학절차</h2>
+        </div>
+
+        <div class="emmath-process-list">
+
+            <!-- 1단계 -->
+            <div class="emmath-step-card step-1">
+                전화 상담 또는 방문 상담
+            </div>
+
+            <div class="emmath-step-arrow">⌄</div>
+
+            <!-- 2단계 -->
+            <div class="emmath-step-card step-process">
+                학습 진단 후 학생의 성향과 학습 수준에 맞춰 선생님 배정
+            </div>
+
+            <div class="emmath-step-arrow">⌄</div>
+
+            <!-- 3단계 -->
+            <div class="emmath-step-card step-process">
+                학생 스케줄에 맞춰 수업시간 선택
+            </div>
+
+            <div class="emmath-step-arrow">⌄</div>
+
+            <!-- 4단계 -->
+            <div class="emmath-step-card step-final">
+                입학
+            </div>
+
+            <div class="emmath-step-arrow">⌄</div>
+
+            <!-- CTA 버튼 -->
+            <a href="http://pf.kakao.com/_xxxxxx/chat" target="_blank" class="emmath-kakao-btn">
+                <!-- 카카오톡 아이콘 SVG -->
+                <svg class="emmath-kakao-icon" viewBox="0 0 24 24">
+                  <path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.8 1.9 5.2 4.8 6.5-.2.8-1.2 3-1.3 3.5 0 .1 0 .2.2.2.1 0 .2 0 .3-.1 3.6-2.4 4.3-2.9 4.7-3.1.4.1.9.1 1.3.1 5.5 0 10-3.5 10-7.8S17.5 3 12 3z"/>
+              </svg> 카카오상담 바로가기
+            </a>
+
+        </div>
+
+    </div>
+</div>

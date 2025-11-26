@@ -1,0 +1,144 @@
+<!--
+  EmMath Project Rules
+  이 파일은 Cursor에서 이 프로젝트를 다룰 때 따라야 할 규칙들을
+  HTML 형식으로 정리한 메모입니다.
+-->
+
+<section id="emmath-project-rules">
+  <h1>EmMath HTML/CSS 규칙</h1>
+
+  <h2>1. 클래스 네이밍 규칙</h2>
+  <ul>
+    <li>
+      <strong>접두어 사용</strong>:
+      모든 CSS 클래스명은 반드시 <code>emmath-</code> 또는 <code>emmath_</code>로 시작해야 합니다.
+      (예: <code>emmath-card</code>, <code>emmath-card__title</code>)
+    </li>
+    <li>
+      <strong>BEM 스타일 권장</strong>:
+      블록/엘리먼트/모디파이어 네이밍 시에도 블록 이름 앞에는
+      항상 <code>emmath-</code>를 붙입니다.
+      (예: <code>emmath-card__icon--active</code>)
+    </li>
+  </ul>
+
+  <h2>2. 파일 형식 규칙</h2>
+  <ul>
+    <li>
+      <strong>단일 HTML 파일 구조</strong>:
+      아임웹에 삽입되는 코드는 <code>&lt;style&gt;</code> + HTML 구조 + 선택적인
+      <code>&lt;script&gt;</code> 블록으로 구성하며,
+      최상위 <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> 태그는 사용하지 않습니다.
+    </li>
+    <li>
+      <strong>전역 스타일 최소화</strong>:
+      가능한 한 특정 컨테이너(예: <code>.emmath-cards-container</code>) 안에서만
+      스타일이 적용되도록 클래스 기반 셀렉터를 사용합니다.
+    </li>
+    <li>
+      <strong>최상위 너비 지정 금지</strong>:
+      이미 아임웹에서 <code>body</code>에 <code>max-width: 1400px</code> 등이 설정되어 있으므로,
+      최상위 컨테이너에는 <code>max-width</code>를 다시 지정하지 않습니다.
+      필요하다면 <code>width: 100%</code> 또는 너비 속성을 생략합니다.
+    </li>
+  </ul>
+
+  <h2>3. 인터랙션/애니메이션 규칙</h2>
+  <ul>
+    <li>
+      <strong>부드러운 이펙트</strong>:
+      hover/transition 효과는 150–220ms 정도의 <code>ease-out</code>로,
+      미세한 이동과 소프트 섀도우 중심으로 적용합니다.
+    </li>
+    <li>
+      <strong>과한 모션 지양</strong>:
+      scale, rotation 등의 과한 애니메이션은 사용하지 않고,
+      위치/배경/그림자 정도만 가볍게 조정합니다.
+    </li>
+  </ul>
+
+  <h2>4. 폰트 스타일 규칙</h2>
+  <ul>
+    <li>
+      <strong>강제 적용</strong>:
+      아임웹 기본 스타일을 확실히 덮어쓰기 위해
+      <code>font-size</code>, <code>font-weight</code>와 같이 폰트 크기·두께를 지정할 때는
+      항상 <code>!important</code>를 함께 사용합니다.
+      (예: <code>font-size: 18px !important;</code>)
+    </li>
+  </ul>
+  <h2>5. 컬러 팔레트 규칙</h2>
+  <ul>
+    <li>
+      <strong>브랜드 컬러</strong>:
+      <ul>
+        <li>
+          <span style="color: #DE1212">■</span> <strong>Brand Red (#DE1212)</strong>:
+          강조, 포인트, 아이콘, 체크마크 등에 제한적으로 사용하여 주목도를 높입니다.
+        </li>
+        <li>
+          <span style="color: #0E295E">■</span> <strong>Brand Navy (#0E295E)</strong>:
+          메인 타이틀, 중요 텍스트, 신뢰감을 주어야 하는 영역에 주조색으로 사용합니다.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>보조 및 배경 컬러</strong>:
+      <ul>
+        <li>
+          <strong>Ice Blue (#F0F7FC)</strong>: 카드 배경, 은은한 강조 배경으로 사용하여 브랜드 네이비와 조화를 이룹니다.
+        </li>
+        <li>
+          <strong>System Gray (#F5F5F7)</strong>: 구분선, 섹션 배경 등 애플 스타일의 깔끔한 배경 처리에 사용합니다.
+        </li>
+        <li>
+          <strong>Body Text (#1d1d1f ~ #424245)</strong>: 본문은 완전한 검정(#000)보다는 짙은 회색을 사용하여 눈의 피로를 줄입니다.
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>6. 타이포그래피 가이드 (Apple Style)</h2>
+  <ul>
+    <li>
+      <strong>계층별 크기 (PC 기준)</strong>:
+      <ul>
+        <li><strong>Page Title</strong>: 40px ~ 48px (강한 임팩트)</li>
+        <li><strong>Section Title</strong>: 30px ~ 34px (구분감 명확히)</li>
+        <li><strong>Card/Item Title</strong>: 20px ~ 24px</li>
+        <li><strong>Body Text</strong>: 16px ~ 17px (가독성 최우선)</li>
+        <li><strong>Caption/Small</strong>: 13px ~ 14px</li>
+      </ul>
+    </li>
+    <li>
+      <strong>반응형 조정 (Mobile)</strong>:
+      모바일(768px 이하)에서는 타이틀 크기를 약 60~70% 수준으로 과감하게 축소하여
+      화면 꽉 참을 방지하고 가독성을 유지합니다. (예: 44px → 28px)
+    </li>
+  </ul>
+
+  <h2>7. 레이아웃 및 반응형 규칙</h2>
+  <ul>
+    <li>
+      <strong>박스 모델 초기화</strong>:
+      컴포넌트 최상위 래퍼와 그 하위 요소들에 대해 반드시
+      <code>box-sizing: border-box</code>를 명시하여 패딩으로 인한 레이아웃 깨짐을 방지합니다.
+    </li>
+    <li>
+      <strong>모바일 브레이크포인트</strong>:
+      표준 분기점은 <code>max-width: 768px</code>로 설정하며,
+      이 시점에서 Grid/Flex 레이아웃을 1열(Column)로 전환합니다.
+    </li>
+  </ul>
+
+  <h2>8. 에셋 및 아이콘 규칙</h2>
+  <ul>
+    <li>
+      <strong>SVG 사용 권장</strong>:
+      단순 아이콘이나 로고는 PNG/JPG 이미지 대신 <strong>SVG 코드</strong>를 직접 삽입하여
+      모든 해상도에서 선명하게 보이도록 합니다.
+    </li>
+  </ul>
+</section>
+
+

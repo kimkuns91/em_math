@@ -1,0 +1,100 @@
+<!-- 
+  배경 이미지 + 타이틀 통합 컴포넌트
+  아임웹의 '섹션 배경' 기능을 사용하지 않고, 
+  이 코드 하나로 '배경 이미지'와 '우측 정렬 타이틀'을 모두 처리합니다.
+  
+  [사용법]
+  1. 아임웹 섹션의 배경은 '없음' 또는 '흰색'으로 두세요.
+  2. 섹션의 여백을 모두 0으로 설정하세요 (상하좌우).
+  3. 'HTML 위젯'을 추가하고 이 코드를 붙여넣으세요.
+-->
+
+<style>
+    /* 전체 컨테이너: 배경 이미지 담당 */
+    
+    .emmath-hero-section {
+        position: relative;
+        width: 100%;
+        height: 188px;
+        /* PC 높이 */
+        background-image: url('https://cdn.imweb.me/thumbnail/20251126/417c6c2250bdd.png');
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    /* 내용 래퍼: 중앙 정렬 및 최대 너비 제한 */
+    
+    .emmath-hero-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 1400px;
+        /* 사이트 기준 너비 */
+        margin: 0 auto;
+        /* 중앙 정렬 */
+        padding: 0 20px;
+        /* 좌우 여백 */
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        /* 수직 중앙 */
+        justify-content: flex-end;
+        /* 우측 정렬 */
+    }
+    /* 타이틀 텍스트 그룹 */
+    
+    .emmath-hero-text-group {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        z-index: 10;
+        /* 배경보다 위에 */
+    }
+    
+    .emmath-hero-title-ko {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        color: #0E295E;
+        /* Brand Navy */
+        letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1;
+    }
+    
+    .emmath-hero-title-en {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        color: #a1a1a6;
+        /* 연한 회색 */
+        letter-spacing: -0.01em;
+        margin: 0;
+        line-height: 1;
+    }
+    /* 반응형 (모바일) */
+    
+    @media (max-width: 768px) {
+        .emmath-hero-section {
+            height: 120px;
+            /* 모바일 높이 축소 */
+        }
+        .emmath-hero-title-ko,
+        .emmath-hero-title-en {
+            font-size: 20px !important;
+        }
+        .emmath-hero-text-group {
+            gap: 8px;
+        }
+    }
+</style>
+
+<div class="emmath-hero-section">
+    <div class="emmath-hero-content">
+        <div class="emmath-hero-text-group">
+            <span class="emmath-hero-title-ko">수업시스템</span>
+            <span class="emmath-hero-title-en">Class System</span>
+        </div>
+    </div>
+</div>
